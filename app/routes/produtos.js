@@ -1,11 +1,14 @@
 module.exports = function(app) {
     //ROTA DO EXPRESS DE PRODUTOS
-    app.get('/produtos', function(req, res) {
-        console.log('passou');
+    app.get('/produtos', function(req, res, next) {
         var connection = app.infra.connectionFactory();
         var produtosDAO = new app.infra.produtosDAO(connection);
 
         produtosDAO.lista(function(err, results) {
+
+            if (err) {
+                return next(err);
+            }
 
             //ENVIA UM JSON COM OS RESULTADOS DA QUERY
             //res.send(results);
