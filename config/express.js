@@ -1,6 +1,7 @@
 var express = require('express');
 var load = require('express-load');
 var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
 
 module.exports = function() {
     var app = express();
@@ -10,6 +11,8 @@ module.exports = function() {
     //SERVE PARA OBTER FORMULARIOS COM O BODY DA REQUEST DE FORMA SIMPLES (BODY-PARSER)
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
+
+    app.use(expressValidator());
 
     //UTILIZANDO O EXPRESS-LOAD FACILITA A IMPORTACAO DE MODULOS NO PROJETO
     //TIRANDO NECESSIDADE DE DIVERSON REQUIRES
