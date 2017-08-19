@@ -1,0 +1,20 @@
+{
+  "name": "casadocodigo",
+  "version": "1.0.0",
+  "description": "site do casa do codigo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasmedinacav/casadocodigoNodeJs.git"
+  },
+  "author": "Lucas Medina",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "mysql": "^2.14.1"
+  }
+}
