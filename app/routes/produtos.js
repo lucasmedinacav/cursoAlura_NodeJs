@@ -11,7 +11,19 @@ module.exports = function(app) {
             //res.send(results);
 
             //ENVIAR O JSON PARA DENTRO DO TEMPLATE HTML TRATAR JA REDIRECIONANDO
-            res.render('produtos/lista', { lista: results });
+            //res.render('produtos/lista', { lista: results });
+
+            //CONTENT NEGOTIATION - CONTROLA QUAL TIPO DE DADO
+            //SERA ENVIADO CONFORME QUEM ESTA ESPERANDO SOLICITOU
+            //PODE SERVIR COMO REDIRECIONAMENTO P UM PAGINA OU COMO UM METODO REST
+            res.format({
+                html: function() {
+                    res.render("produtos/lista", { lista: results });
+                },
+                json: function() {
+                    res.json(results);
+                }
+            });
         });
         connection.end();
     });
