@@ -3,18 +3,34 @@ module.exports = function(app) {
     app.get('/produtos', function(req, res) {
 
         var connection = app.infra.connectionFactory();
+        var produtosDAO = new app.infra.produtosDAO(connection);
 
-        connection.query('select * from produtos', function(err, results) {
-            console.log(results);
+        produtosDAO.lista(function(err, results) {
+
             //ENVIA UM JSON COM OS RESULTADOS DA QUERY
             //res.send(results);
 
             //ENVIAR O JSON PARA DENTRO DO TEMPLATE HTML TRATAR JA REDIRECIONANDO
             res.render('produtos/lista', { lista: results });
         });
-
         connection.end();
     });
+
+    app.get("/produtos/form", function(req, res) {
+        res.render('produtos/form');
+    });
+
+    app.post('/produtos/salva', function(req, res) {
+        var produto = req.body;
+        console.log(produto);
+
+        var connection = app.infra.connectionFactory();
+        var produtosDAO = new app.infra.produtosDAO(connection);
+
+        produtosDAO.salva(produto, function(erros, resultado) {
+            res.redirect("/produtos");
+        })
+    })
 }
 
 
