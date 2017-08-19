@@ -1,10 +1,14 @@
 var mysql = require('mysql');
 
-module.exports = function() {
+function createDBConnection() {
     return mysql.createConnection({
         host: 'localhost',
         user: 'root',
         password: 'admin123',
         database: 'casadocodigo_nodejs'
-    })
+    });
+}
+
+module.exports = function() {
+    return createDBConnection;
 };

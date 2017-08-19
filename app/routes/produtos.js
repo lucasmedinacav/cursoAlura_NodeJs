@@ -1,10 +1,8 @@
-var connectionFactory = require('../infra/connectionFactory');
-
 module.exports = function(app) {
     //ROTA DO EXPRESS DE PRODUTOS
     app.get('/produtos', function(req, res) {
 
-        var connection = connectionFactory();
+        var connection = app.infra.connectionFactory();
 
         connection.query('select * from produtos', function(err, results) {
             console.log(results);
