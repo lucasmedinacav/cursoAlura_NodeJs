@@ -66,6 +66,7 @@ module.exports = function(app) {
 
         produtosDAO.salva(produto, function(erros, resultado) {
             console.log(erros);
+            //CHAMA A ROTA DE GET PARA CONSULTAR OS PRODUTOS ATUALIZADOS
             res.redirect("/produtos");
         })
     })

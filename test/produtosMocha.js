@@ -1,6 +1,6 @@
 var http = require('http');
 var assert = require('assert');
-describe('#ProdutosController', function() {
+/*describe('#ProdutosController', function() {
     it('#listagem json', function(done) {
         var configuracoes = {
             hostname: 'localhost',
@@ -18,4 +18,4 @@ describe('#ProdutosController', function() {
         });
     });
 
-});
+});*/
