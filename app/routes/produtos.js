@@ -1,7 +1,7 @@
 module.exports = function(app) {
     //ROTA DO EXPRESS DE PRODUTOS
     app.get('/produtos', function(req, res) {
-
+        console.log('passou');
         var connection = app.infra.connectionFactory();
         var produtosDAO = new app.infra.produtosDAO(connection);
 
