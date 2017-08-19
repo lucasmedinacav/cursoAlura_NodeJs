@@ -9,6 +9,7 @@ module.exports = function() {
 
     //SERVE PARA OBTER FORMULARIOS COM O BODY DA REQUEST DE FORMA SIMPLES (BODY-PARSER)
     app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
 
     //UTILIZANDO O EXPRESS-LOAD FACILITA A IMPORTACAO DE MODULOS NO PROJETO
     //TIRANDO NECESSIDADE DE DIVERSON REQUIRES
