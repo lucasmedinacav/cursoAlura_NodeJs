@@ -15,12 +15,25 @@ module.exports = function() {
     //SERVE PARA REALIZAR VALIDACOES DOS CAMPOS DO BODY DA REQUISICAO DE FORM
     app.use(expressValidator());
 
+    //QUALQUER TEMPLATE PODE UTILIZAR ESSES ARQUIVOS(JS CSS IMG) ESTATICOS
     app.use(express.static('./app/public'));
 
     //UTILIZANDO O EXPRESS-LOAD FACILITA A IMPORTACAO DE MODULOS NO PROJETO
     //TIRANDO NECESSIDADE DE DIVERSON REQUIRES
-    load('routes', { cwd: 'app' })
+    load('routes', { cwd: 'app', verbose: true })
         .then('infra')
         .into(app)
+
+    app.use(function(req, res, next) {
+        res.status(404).render("erros/404");
+    });
+
+    app.use(function(error, req, res, next) {
+        if (process.env.NODE_ENV == 'production') {
+            res.status(500).render('erros/500');
+            return;
+        }
+        next(error);
+    });
     return app;
 };
