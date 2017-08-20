@@ -12,7 +12,10 @@ module.exports = function() {
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
 
+    //SERVE PARA REALIZAR VALIDACOES DOS CAMPOS DO BODY DA REQUISICAO DE FORM
     app.use(expressValidator());
+
+    app.use(express.static('./app/public'));
 
     //UTILIZANDO O EXPRESS-LOAD FACILITA A IMPORTACAO DE MODULOS NO PROJETO
     //TIRANDO NECESSIDADE DE DIVERSON REQUIRES
